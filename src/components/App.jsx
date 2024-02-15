@@ -23,11 +23,11 @@ export function App() {
     setInputValue(event.target.value);
   };
 
-  const handleAddContact = (newContact) => {
-    setContacts((prevContacts) => {
-      return [...prevContacts, newContact];
-    });
-  };
+  // const handleAddContact = (newContact) => {
+  //   setContacts((prevContacts) => {
+  //     return [...prevContacts, newContact];
+  //   });
+  // };
 
   const deleteContact = (userId) => {
     setContacts((prevContacts) =>
@@ -43,7 +43,7 @@ export function App() {
     <>
       <div>
         <h1>Phonebook</h1>
-        <ContactForm onAddContact={handleAddContact} />
+        <ContactForm />
         <SearchBox value={inputValue} onChange={handleSearchChange} />
         <ContactList contacts={searchedContacts} onDelete={deleteContact} />
       </div>
