@@ -9,7 +9,7 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, action) {
-        state.push(action.payload);
+        state.contacts.push(action.payload);
       },
       // prepare(text) {
       //   return {
@@ -30,7 +30,7 @@ const contactsSlice = createSlice({
     },
   },
 });
-console.log(contactsSlice);
+// console.log(contactsSlice);
 //  експортуємо генератори екшенів та редюсер
 export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

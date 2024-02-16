@@ -32,12 +32,20 @@ export const ContactForm = () => {
   console.log(contacts);
 
   const handleSubmit = (values, { resetForm }) => {
-    const newContact = {
-      ...values,
-      id: nanoid(),
-    };
-    dispatch(addContact(newContact));
-    resetForm();
+    const alreadyExists = contacts.some(
+      (contact) => contact.name === values.name
+    );
+
+    if (alreadyExists) {
+      alert(`${values.name} already exists!`);
+    } else {
+      const newContact = {
+        ...values,
+        id: nanoid(),
+      };
+      dispatch(addContact(newContact));
+      resetForm();
+    }
   };
 
   return (

@@ -29,11 +29,11 @@ export function App() {
   //   });
   // };
 
-  const deleteContact = (userId) => {
-    setContacts((prevContacts) =>
-      prevContacts.filter((contact) => contact.id !== userId)
-    );
-  };
+  // const deleteContact = (userId) => {
+  //   setContacts((prevContacts) =>
+  //     prevContacts.filter((contact) => contact.id !== userId)
+  //   );
+  // };
 
   const searchedContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(inputValue.toLowerCase())
@@ -45,7 +45,7 @@ export function App() {
         <h1>Phonebook</h1>
         <ContactForm />
         <SearchBox value={inputValue} onChange={handleSearchChange} />
-        <ContactList contacts={searchedContacts} onDelete={deleteContact} />
+        <ContactList contacts={searchedContacts} />
       </div>
     </>
   );

@@ -1,11 +1,12 @@
 import { BiSolidUser } from "react-icons/bi";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import css from "./Contact.module.css";
+import { deleteContact } from "../redux/contactsSlice";
+import { useDispatch } from "react-redux";
 
-export const Contact = ({ name, number, id, onDelete }) => {
-  // const handleDeleteClick = () => {
-  //   onDelete(id);
-  // };
+export const Contact = ({ name, number, id }) => {
+  const dispatch = useDispatch();
+  const handleDeleteContact = (contactId) => dispatch(deleteContact(contactId));
 
   return (
     <li key={id}>
@@ -20,7 +21,7 @@ export const Contact = ({ name, number, id, onDelete }) => {
             {number}
           </p>
         </div>
-        <button type="button" onClick={() => onDelete(id)}>
+        <button type="button" onClick={() => handleDeleteContact(id)}>
           Delete
         </button>
       </div>
