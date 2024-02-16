@@ -13,15 +13,15 @@ export function App() {
   ];
 
   const [contacts, setContacts] = useState(savedContacts);
-  const [inputValue, setInputValue] = useState("");
+  // const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     localStorage.setItem("contacts", JSON.stringify(contacts));
   }, [contacts]);
 
-  const handleSearchChange = (event) => {
-    setInputValue(event.target.value);
-  };
+  // const handleSearchChange = (event) => {
+  //   setInputValue(event.target.value);
+  // };
 
   // const handleAddContact = (newContact) => {
   //   setContacts((prevContacts) => {
@@ -35,17 +35,17 @@ export function App() {
   //   );
   // };
 
-  const searchedContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(inputValue.toLowerCase())
-  );
+  // const searchedContacts = contacts.filter((contact) =>
+  //   contact.name.toLowerCase().includes(inputValue.toLowerCase())
+  // );
 
   return (
     <>
       <div>
         <h1>Phonebook</h1>
         <ContactForm />
-        <SearchBox value={inputValue} onChange={handleSearchChange} />
-        <ContactList contacts={searchedContacts} />
+        <SearchBox />
+        <ContactList />
       </div>
     </>
   );
