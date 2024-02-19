@@ -1,20 +1,28 @@
 import { Contact } from "../Contact/Contact";
 import { useSelector } from "react-redux";
-import { getContact } from "../redux/selectors";
+import { getContact, getFilter } from "../redux/selectors";
 
-export const ContactList = ({ onDelete }) => {
+export const ContactList = () => {
   const contacts = useSelector(getContact);
+  const filter = useSelector(getFilter);
+
+  const searchedContacts = filter
+    ? contacts.contacts.filter((contact) =>
+        contact.name.toLowerCase().includes(filter.toLowerCase())
+      )
+    : contacts.contacts;
 
   return (
     <div>
       <ul>
-        {contacts.map((contact) => (
+        {console.log(searchedContacts)}
+        {searchedContacts.map((contact) => (
           <Contact
             id={contact.id}
             key={contact.id}
             name={contact.name}
             number={contact.number}
-            onDelete={onDelete}
+            // onDelete={handleDeleteContact}
           />
         ))}
       </ul>
@@ -22,6 +30,7 @@ export const ContactList = ({ onDelete }) => {
   );
 };
 
+// Contact.jsx
 // import { BiSolidUser } from "react-icons/bi";
 // import { BsFillTelephoneFill } from "react-icons/bs";
 // import css from "./Contact.module.css";
